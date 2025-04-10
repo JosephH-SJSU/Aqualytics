@@ -53,7 +53,7 @@ if ref_img and test_img:
                                     f"The user is testing {use_case}. Compare this reference chart to the test strip. "
                                     f"Return water quality readings and how it relates to {use_case} (like pH, copper, nitrate, etc.) in this format:\n\n"
                                     "1. **Summary** – Is the water safe or not?\n"
-                                    "2. **Breakdown** – Bullet points for each value with emojis:\n"
+                                    "2. **Breakdown** – Bullet points for each value with the numbered levels and emojis:\n"
                                     "   - ✅ Safe\n"
                                     "   - ⚠️ Caution\n"
                                     "   - 🔴 Problem\n"
