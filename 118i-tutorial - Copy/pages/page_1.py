@@ -15,7 +15,7 @@ def encode_image(image_path):
 
 
 # Path to your image
-image_path = "C:\\Users\\Joseph\\118i_Lab06\\118i-tutorial\\pages\\images\\WaterQuality_Photo.png"
+image_path = "replace\\with\\image\\path.png"
 
 # Getting the Base64 string
 base64_image = encode_image(image_path)
