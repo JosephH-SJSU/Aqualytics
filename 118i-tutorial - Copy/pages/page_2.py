@@ -8,25 +8,31 @@ import streamlit as st
 openai.api_key = os.environ["OPENAI_API_KEY"]
 client = OpenAI()
 
-st.markdown("# Page 2: Water Test Kit Analysis 💧")
+#This code is written with the aid of 118I Tutorial and ChatGPT.
+
+st.markdown("# Water Test Kit Analysis 💧")
 st.sidebar.markdown("# Page 2: Water Test Kit Analysis 💧")
 
 water_type = st.selectbox(
     "What type of water are you testing?",
-    ["Drinking/Cooking Water", "Bathing/Shower Water", "Face Washing Water", "Laundry Water", "Pet Water", "Plant Water"])
+    ["Drinking/Cooking Water 🥛", "Bathing/Shower Water 🚿", "Face Washing Water 😌", "Laundry Water 👕", "Pet Water 🐾", "Plant Water 🌱"])
 st.info(f" You selected water for: **{water_type}**")
 
-if water_type == "Pet Water":
+if water_type == "Pet Water 🐾":
     pet_type = st.selectbox(
         "What kind of pet is the water for?",
-        ["Fish Tank", "Reptile Enclosure", "Dog Bowl", "Cat Fountain"]
+        ["Fish Tank 🐠", "Reptile Enclosure 🐢", "Dog Bowl 🐶", "Cat Fountain 🐱"]
     )
-    st.info(f"🐾 You selected water for: **{pet_type}**")
+    st.info(f" You selected water for: **{pet_type}**")
 
-if water_type == "Pet Water":
+if water_type == "Pet Water 🐾":
     use_case = f"pet water for a {pet_type.lower()}"
 else:
     use_case = water_type.lower()
+
+user_consent = st.checkbox(
+    "By uploading, you confirm this is your own test result and the images can be used to train the model."
+)
 
 ref_img = st.file_uploader("📋 Upload Reference Chart", type=["jpg", "jpeg", "png"])
 test_img = st.file_uploader("🧪 Upload Test Strip", type=["jpg", "jpeg", "png"])
@@ -34,7 +40,10 @@ test_img = st.file_uploader("🧪 Upload Test Strip", type=["jpg", "jpeg", "png"
 def encode_image(image_file):
     return base64.b64encode(image_file.read()).decode("utf-8")
 
-if ref_img and test_img:
+if (ref_img or test_img) and not user_consent:
+    st.warning("Please confirm consent before running the analysis.")
+
+if ref_img and test_img and user_consent:
     if st.button("🔍 Analyze Water Quality"):
         with st.spinner("Analyzing images with GPT-4 Turbo... 💡"):
             ref_base64 = encode_image(ref_img)
@@ -79,8 +88,16 @@ if ref_img and test_img:
             result = response.choices[0].message.content
             st.subheader("🧠 AI Analysis")
             st.write(result)
+
+            st.session_state.analysis_done = True
 else:
     st.info("Please upload both the reference and test strip images to begin.")
+
+if st.session_state.get("analysis_done"):
+        st.markdown("---")
+        st.info("If your water quality seems unsafe, you can report the issue on page 3. Spread awareness to your community!")
+        if st.button("🚨 Report a Water Quality Issue"):
+            st.switch_page("pages/page_3.py")
 
 st.subheader("💬 Have more questions?")
 
@@ -104,5 +121,5 @@ if user_question:
         )
 
         answer = followup_response.choices[0].message.content
-        st.markdown("### 📘 Answer")
+        st.markdown("### 📝 Answer")
         st.write(answer)
