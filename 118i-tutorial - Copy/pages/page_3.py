@@ -9,7 +9,7 @@ from openai import OpenAI
 
 #files 
 REPORT_FILE = "reports.json"
-SYNTHETIC_CSV = "pages/Data.csv"
+SYNTHETIC_CSV = os.path.join(os.path.dirname(__file__), "data", "Data.csv")
 
 # Load any real reports if available before implementing synthetic data
 if os.path.exists(REPORT_FILE):
@@ -44,11 +44,19 @@ st.bar_chart(district_counts) #the bar chart that has the distrcit counters
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 client = OpenAI()
 
-district_summary = ", ".join([f"{district} ({count} reports)" for district, count in district_counts.items()])
+district_texts = {"District 1": "", "District 2": "", "District 3": ""}
+for report in reports:
+    district_texts[report["district"]] += report["text"] + " "
+
+district_summary = "\n".join([
+    f"{district} — {district_counts[district]} reports\nReported issues: {district_texts[district].strip()}"
+    for district in ["District 1", "District 2", "District 3"]
+])
 prompt = (
-    f"The water quality report counts by district are as follows: {district_summary}. "
-    "Based on this data, what possible conclusions or insights can be drawn about the water quality issues in each district? "
-    "Are there any patterns or areas of concern that might require further investigation or action?"
+    f"Below is a summary of water quality reports grouped by district. Each district includes the total number of reports and example reported issues:\n\n"
+    f"{district_summary}\n\n"
+    "Based on both the number and content of these reports, provide insights into what might be going on in each district. "
+    "Highlight any recurring concerns, unusual patterns, and areas that may need urgent attention or further investigation."
 )
 
 def get_completion(prompt, model="gpt-3.5-turbo"):
@@ -81,7 +89,7 @@ if reports:  #if reports has any reports
                 real_index = i - len(synthetic_reports) #setting the index
                 real_reports.pop(real_index) # removing
                 with open(REPORT_FILE, "w") as f: #(then we open the main report file again) ("w" means write mode, so we can modify it)
-                    json.dump(reports, f, indent=4) #writes the new list of reports (after deletion)
+                    json.dump(real_reports, f, indent=4) #writes the new list of reports (after deletion)
                 st.rerun() #instantly rerns the streamlit app so we can see it delted
 
         st.markdown("---")
