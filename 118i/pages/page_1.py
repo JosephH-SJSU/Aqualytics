@@ -5,7 +5,7 @@ import base64
 import requests
 import streamlit as st
 
-from openai import OpenAI
+openai.api_key = os.environ["OPENAI_API_KEY"]
 client = OpenAI()
 
 # Function to encode the image

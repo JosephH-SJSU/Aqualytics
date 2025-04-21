@@ -41,7 +41,7 @@ st.subheader("Report Count by District") #header for the chart that shows count 
 st.bar_chart(district_counts) #the bar chart that has the distrcit counters
 
 #AI
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+openai.api_key = os.environ["OPENAI_API_KEY"]
 client = OpenAI()
 
 district_texts = {"District 1": "", "District 2": "", "District 3": ""}
