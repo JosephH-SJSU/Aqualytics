@@ -8,7 +8,7 @@ from PIL import Image
 col1, col2 = st.columns([1, 5])  # Adjust ratio for spacing
 
 with col1:
-    logo = Image.open("images\Aqualytics_Logo_Cleaned.png")
+    logo = Image.open("images/Aqualytics_Logo_Cleaned.png")
     st.image(logo, width= 150)
 
 with col2:
