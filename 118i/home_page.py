@@ -16,15 +16,37 @@ with col2:
     st.markdown("##### Smart Water Quality Analysis, Powered by AI")
     st.sidebar.markdown("# Main Page")
 
+st.markdown("### Welcome to Aqualytics!")
+
 st.markdown("""
-### 💧 Welcome to Aqualytics!
-**Your AI-powered assistant for understanding and improving water quality.**
+Designed to make water quality information clear, actionable, and accessible for everyone.
+""")
 
-Aqualytics is designed to make water quality information clear, actionable, and accessible for everyone — no science degree required.
+st.markdown("- **Page 1**: Ask questions about complex water quality reports, such as those from Silicon Valley Water. Our AI breaks down confusing jargon and numbers into simple, helpful insights.")
+st.image("images/valley_water.png", caption="Sillicon Valley Water Quality Report", use_container_width=True)
 
-- **Page 1**: Ask questions about complex water quality reports, such as those from Silicon Valley Water. Our AI breaks down confusing jargon and numbers into simple, helpful insights.  
-- **Page 2**: Upload your own home water test kit results. Aqualytics will analyze them for you using AI, helping you understand exactly what the colors mean and whether your water is safe.  
-- **Page 3**: If your water appears unsafe, report it directly through the app. Your report helps raise awareness in your district and encourages proactive community responses.
+st.markdown("- **Page 2**: Upload your own home water test kit results. Aqualytics will analyze them for you using AI, helping you understand exactly what the colors mean and whether your water is safe.")
 
+col1, col2, col3 = st.columns([1, 2, 1])
+
+with col2:
+    st.image(
+        "images/test_kit_results.png",
+        caption="Test Kit Result Example (AI Generated)",
+        width=300
+    )
+
+st.markdown("- **Page 3**: If your water appears unsafe, report it directly through the app. Your report helps raise awareness in your district and encourages proactive community responses.")
+
+col1, col2, col3 = st.columns([1, 2, 1])
+
+with col2:
+    st.image(
+        "images/report_example.png",
+        caption="Reporting Issue Example (AI Generated)",
+        width=300
+    )
+
+st.markdown("""
 Together, we can make water safety smarter, faster, and more transparent. 💧
 """)
