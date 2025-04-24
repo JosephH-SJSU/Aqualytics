@@ -6,10 +6,13 @@ from collections import Counter
 import pandas as pd
 import openai
 from openai import OpenAI
+import unicodedata
 
 #files 
 REPORT_FILE = "reports.json"
 SYNTHETIC_CSV = os.path.join(os.path.dirname(__file__), "data", "Data.csv")
+
+
 
 # Load any real reports if available before implementing synthetic data
 if os.path.exists(REPORT_FILE):
@@ -59,18 +62,23 @@ prompt = (
     "Highlight any recurring concerns, unusual patterns, and areas that may need urgent attention or further investigation."
 )
 
+def ascii_safe(text):
+    return unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode("ascii")
+
 def get_completion(prompt, model="gpt-3.5-turbo"):
+    safe_prompt = ascii_safe(prompt)
     completion = client.chat.completions.create(
         model=model,
         messages=[
-            {"role": "system", "content": prompt},
-            {"role": "user", "content": prompt},
+            {"role": "system", "content": safe_prompt},
+            {"role": "user", "content": safe_prompt},
         ]
     )
     return completion.choices[0].message.content
 
 st.subheader("AI-Generated Insights")
 st.write(get_completion(prompt))
+
 
 
 #displaying reports from reports, backwards (recent)
