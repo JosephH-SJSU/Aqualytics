@@ -40,8 +40,28 @@ for d in ["District 1", "District 2", "District 3"]: #make sure all the district
 
 st.title("Water Quality Reports")
 
+st.subheader("Submit a New Report") #sub header
+
+with st.form("report_form"):# creating an "input block", inputs won't take action until report has been submitted
+    #drop down with district options
+    district = st.selectbox("District", ["District 1", "District 2", "District 3"], index=None, placeholder="Select a district...")
+    text = st.text_input("Describe the issue") #statement for the issue
+    submitted = st.form_submit_button("Submit") #when submitted, saves as a variable
+
 st.subheader("Report Count by District") #header for the chart that shows count of districts reported
 st.bar_chart(district_counts) #the bar chart that has the distrcit counters
+
+if submitted and district and text: #now if those three inputs have been triggered
+    new_report = { #create a dictionary to store the new report
+        "district": district, #mapping the dictionary
+        "text": text,
+        "date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }
+    real_reports.append(new_report) #adding the new report to reports
+    with open(REPORT_FILE, "w") as f:# open the main reports file (with is there to handle opening and closing file)
+        json.dump(real_reports, f, indent=4) #writes the updated reports list to the JSON file. indent for visuals.
+    st.success("Report submitted successfully.") #Report has been submitted
+    st.rerun() #reruns the program for the user with the updated report
 
 #AI
 openai.api_key = os.environ["OPENAI_API_KEY"]
@@ -104,24 +124,3 @@ if reports:  #if reports has any reports
         st.markdown("---")
 else:   #if reports is empty, it will say there are no reports
     st.info("No reports yet.")
-
-
-st.subheader("Submit a New Report") #sub header
-
-with st.form("report_form"):# creating an "input block", inputs won't take action until report has been submitted
-    #drop down with district options
-    district = st.selectbox("District", ["District 1", "District 2", "District 3"], index=None, placeholder="Select a district...")
-    text = st.text_input("Describe the issue") #statement for the issue
-    submitted = st.form_submit_button("Submit") #when submitted, saves as a variable
-
-if submitted and district and text: #now if those three inputs have been triggered
-    new_report = { #create a dictionary to store the new report
-        "district": district, #mapping the dictionary
-        "text": text,
-        "date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    }
-    real_reports.append(new_report) #adding the new report to reports
-    with open(REPORT_FILE, "w") as f:# open the main reports file (with is there to handle opening and closing file)
-        json.dump(real_reports, f, indent=4) #writes the updated reports list to the JSON file. indent for visuals.
-    st.success("Report submitted successfully.") #Report has been submitted
-    st.rerun() #reruns the program for the user with the updated report
