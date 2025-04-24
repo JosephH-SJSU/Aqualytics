@@ -14,7 +14,6 @@ with col1:
 with col2:
     st.markdown("<h1 style='margin-bottom: 0;'>Aqualytics</h1>", unsafe_allow_html=True)
     st.markdown("##### Smart Water Quality Analysis, Powered by AI")
-    st.sidebar.markdown("# Main Page")
 
 st.markdown("### Welcome to Aqualytics!")
 

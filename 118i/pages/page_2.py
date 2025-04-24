@@ -11,7 +11,15 @@ client = OpenAI()
 #This code is written with the aid of 118I Tutorial and ChatGPT.
 
 st.markdown("# Water Test Kit Analysis 💧")
-st.sidebar.markdown("# Page 2: Water Test Kit Analysis 💧")
+st.sidebar.markdown("### How to Use 👈")
+st.sidebar.markdown("""
+1. Choose Water Type 🌊 
+2. Upload Necessary Kit Images 🏠
+3. Check Consent Box ✅
+4. View Analysis & Recommendations 📊
+5. Ask Questions ❓
+5. Report Any Issues❗
+""")
 
 water_type = st.selectbox(
     "What type of water are you testing?",
@@ -86,6 +94,7 @@ if ref_img and test_img and user_consent:
             )
 
             result = response.choices[0].message.content
+            
             st.subheader("🧠 AI Analysis")
             st.write(result)
 
