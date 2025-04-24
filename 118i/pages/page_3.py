@@ -56,10 +56,11 @@ district_summary = "\n".join([
     for district in ["District 1", "District 2", "District 3"]
 ])
 prompt = (
-    f"Below is a summary of water quality reports grouped by district. Each district includes the total number of reports and example reported issues:\n\n"
+    "Below is a summary of water quality reports grouped by district. Each district includes the total number of reports and example reported issues:\n\n"
     f"{district_summary}\n\n"
-    "Based on both the number and content of these reports, provide insights into what might be going on in each district. "
-    "Highlight any recurring concerns, unusual patterns, and areas that may need urgent attention or further investigation."
+    "Based on both the number and content of these reports, provide concise insights into each district's water quality. "
+    "Highlight recurring concerns, unusual patterns, and areas that may need urgent attention.\n\n"
+    "Structure the response clearly, using bullet points per district. Keep it brief and user-friendly — 3-4 bullets per district at most."
 )
 
 def ascii_safe(text):
