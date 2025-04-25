@@ -48,8 +48,15 @@ with st.form("report_form"):# creating an "input block", inputs won't take actio
     text = st.text_input("Describe the issue") #statement for the issue
     submitted = st.form_submit_button("Submit") #when submitted, saves as a variable
 
-st.subheader("Report Count by District") #header for the chart that shows count of districts reported
-st.bar_chart(district_counts) #the bar chart that has the distrcit counters
+st.subheader("Report Count by District")
+col1, col2 = st.columns(2)
+
+with col1:
+    st.bar_chart(district_counts)
+
+with col2:
+    st.image("Aqualytics/images/district_map.png", caption="District Map", use_column_width=True)
+
 
 if submitted and district and text: #now if those three inputs have been triggered
     new_report = { #create a dictionary to store the new report
