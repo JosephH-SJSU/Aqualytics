@@ -5,7 +5,7 @@ import base64
 import requests
 import streamlit as st
 
-from openai import OpenAI
+openai.api_key = os.environ["OPENAI_API_KEY"]
 client = OpenAI()
 
 # Function to encode the image
@@ -15,13 +15,13 @@ def encode_image(image_path):
 
 
 # Path to your image
-image_path = "images\\WaterQuality_Photo.png"
+image_path = "images/WaterQuality_Photo.png"
 
 # Getting the Base64 string
 base64_image = encode_image(image_path)
 with st.form(key = "chat"):
     st.markdown("# Ask about the most recent water quality report")
-    st.image("images\\WaterQuality_Photo.png", "Water Quality Report Table")
+    st.image("images/WaterQuality_Photo.png", "Water Quality Report Table")
     prompt = st.text_input("Please ask a question about the Water Quality report: ") 
     
     submitted = st.form_submit_button("Submit")
