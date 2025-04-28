@@ -20,8 +20,9 @@ image_path = "images/WaterQuality_Photo.png"
 # Getting the Base64 string
 base64_image = encode_image(image_path)
 with st.form(key = "chat"):
-    st.markdown("# Ask about the most recent water quality report")
+    st.markdown("# Water Quality Report Assistant")
     st.image("images/WaterQuality_Photo.png", "Water Quality Report Table")
+    st.markdown("[Click here to check validity](https://s3.us-west-1.amazonaws.com/valleywater.org.us-west-1/s3fs-public/2025-04/2025_03%20March%20Water%20Quality%20Report.pdf)")
     prompt = st.text_input("Please ask a question about the Water Quality report: ") 
     
     submitted = st.form_submit_button("Submit")
