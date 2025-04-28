@@ -55,7 +55,7 @@ with col1:
     st.bar_chart(district_counts)
 
 with col2:
-    st.image("Aqualytics//images//district_map.png", caption="District Map", use_column_width=True)
+    st.image("images//district_map.png", caption="District Map", use_column_width=True)
 
 
 if submitted and district and text: #now if those three inputs have been triggered
