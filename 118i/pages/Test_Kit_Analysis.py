@@ -106,7 +106,7 @@ if st.session_state.get("analysis_done"):
         st.markdown("---")
         st.info("If your water quality seems unsafe, you can report the issue on page 3. Spread awareness to your community!")
         if st.button("🚨 Report a Water Quality Issue"):
-            st.switch_page("pages/page_3.py")
+            st.switch_page("pages/User_Report_Page.py")
 
 st.subheader("💬 Have more questions?")
 
