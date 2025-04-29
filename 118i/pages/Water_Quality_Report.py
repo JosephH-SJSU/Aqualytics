@@ -24,7 +24,7 @@ with st.form(key = "chat"):
     st.sidebar.markdown("### How to Use")
     st.sidebar.markdown("""
         1. View the latest Water Quality report [here](https://s3.us-west-1.amazonaws.com/valleywater.org.us-west-1/s3fs-public/2025-04/2025_03%20March%20Water%20Quality%20Report.pdf)👈
-        2. Ask the chatbot about definitions.
+        2. Scroll down to ask the chatbot about definitions.
         3. View the AI response \n
         Example Questions: \n
         Why is it important to monitor arsenic levels in the water? \n
