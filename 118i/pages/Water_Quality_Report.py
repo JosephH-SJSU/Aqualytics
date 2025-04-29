@@ -25,11 +25,11 @@ with st.form(key = "chat"):
     st.sidebar.markdown("""
         1. View the latest Water Quality report [here](https://s3.us-west-1.amazonaws.com/valleywater.org.us-west-1/s3fs-public/2025-04/2025_03%20March%20Water%20Quality%20Report.pdf)
         2. Ask the chatbot about definitions.
-        3. View the AI response
-        Example Questions:
-        Why is it important to monitor arsenic levels in the water?
-        What does DLR mean?
-        What does MCL mean?
+        3. View the AI response \n
+        Example Questions: \n
+        Why is it important to monitor arsenic levels in the water? \n
+        What does DLR mean? \n
+        What does MCL mean? \n
 """)
     st.image("images/WaterQuality_Photo.png", "Water Quality Report Table")
     st.markdown("[Click here to check validity](https://s3.us-west-1.amazonaws.com/valleywater.org.us-west-1/s3fs-public/2025-04/2025_03%20March%20Water%20Quality%20Report.pdf)")
