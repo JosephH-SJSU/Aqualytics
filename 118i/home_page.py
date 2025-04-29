@@ -21,10 +21,7 @@ st.markdown("""
 Designed to make water quality information clear, actionable, and accessible for everyone.
 """)
 
-st.markdown("- **Page 1**: Ask questions about complex water quality reports, such as those from Silicon Valley Water. Our AI breaks down confusing jargon and numbers into simple, helpful insights.")
-st.image("images/valley_water.png", caption="Sillicon Valley Water Quality Report", use_container_width=True)
-
-st.markdown("- **Page 2**: Upload your own home water test kit results. Aqualytics will analyze them for you using AI, helping you understand exactly what the colors mean and whether your water is safe.")
+st.markdown("- **Test Kit Analysis**: Upload your own home water test kit results. Aqualytics will analyze them for you using AI, helping you understand exactly what the colors mean and whether your water is safe.")
 
 col1, col2, col3 = st.columns([1, 2, 1])
 
@@ -35,7 +32,7 @@ with col2:
         width=300
     )
 
-st.markdown("- **Page 3**: If your water appears unsafe, report it directly through the app. Your report helps raise awareness in your district and encourages proactive community responses.")
+st.markdown("- **User Report Page**: If your water appears unsafe, report it directly through the app. Your report helps raise awareness in your district and encourages proactive community responses.")
 
 col1, col2, col3 = st.columns([1, 2, 1])
 
@@ -45,6 +42,13 @@ with col2:
         caption="Reporting Issue Example (AI Generated)",
         width=300
     )
+
+st.markdown("- **Water Quality Report Assistant**: Ask questions about complex water quality reports, such as those from Silicon Valley Water. Our AI breaks down confusing jargon and numbers into simple, helpful insights.")
+st.image("images/valley_water.png", caption="Sillicon Valley Water Quality Report", use_container_width=True)
+
+
+
+
 
 st.markdown("""
 Together, we can make water safety smarter, faster, and more transparent. 💧
