@@ -21,9 +21,9 @@ image_path = "images/WaterQuality_Photo.png"
 base64_image = encode_image(image_path)
 with st.form(key = "chat"):
     st.markdown("# Water Quality Report Assistant")
-    st.sidebar.markdown("### How to Use 👈")
+    st.sidebar.markdown("### How to Use")
     st.sidebar.markdown("""
-        1. View the latest Water Quality report [here](https://s3.us-west-1.amazonaws.com/valleywater.org.us-west-1/s3fs-public/2025-04/2025_03%20March%20Water%20Quality%20Report.pdf)
+        1. View the latest Water Quality report [here](https://s3.us-west-1.amazonaws.com/valleywater.org.us-west-1/s3fs-public/2025-04/2025_03%20March%20Water%20Quality%20Report.pdf)👈
         2. Ask the chatbot about definitions.
         3. View the AI response \n
         Example Questions: \n
