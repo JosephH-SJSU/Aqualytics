@@ -43,7 +43,7 @@ with col2:
         width=300
     )
 
-st.markdown("- **Water Quality Report Assistant**: Ask questions about complex water quality reports, such as those from Silicon Valley Water. Our AI breaks down confusing jargon and numbers into simple, helpful insights.")
+st.markdown("- **Water Quality Report Assistant**: Ask questions about the water quality reports from Valley Water. This page helps break down confusing jargon and numbers into simple, helpful insights.")
 st.image("images/valley_water.png", caption="Sillicon Valley Water Quality Report", use_container_width=True)
 
 
