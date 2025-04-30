@@ -45,6 +45,7 @@ st.subheader("Submit a New Report") #sub header
 with st.form("report_form"):# creating an "input block", inputs won't take action until report has been submitted
     #drop down with district options
     district = st.selectbox("District", ["District 1", "District 2", "District 3"], index=None, placeholder="Select a district...")
+    st.caption("📍 District info helps improve local insights. No personal data is stored.")
     text = st.text_input("Describe the issue") #statement for the issue
     submitted = st.form_submit_button("Submit") #when submitted, saves as a variable
 
